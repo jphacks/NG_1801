@@ -23,9 +23,8 @@ class ResultViewController: UIViewController, UIScrollViewDelegate{
         appDelegate.selectedFoods.append(1)
         appDelegate.selectedFoods.append(3)
         appDelegate.selectedFoods.append(40)
-        appDelegate.selectedFoods.append(27)
-        appDelegate.selectedFoods.append(61)
-        appDelegate.selectedFoods.append(2)
+        
+        appDelegate.timecalculation(time: appDelegate.time)
         let num = appDelegate.selectedFoods.count
         let scrollHeight = 660+250*num
 
@@ -75,42 +74,42 @@ class ResultViewController: UIViewController, UIScrollViewDelegate{
         let total:UILabel = UILabel(frame: CGRect(x: 0, y: 100+250*num, width: Int(appDelegate.screenWidth!), height: 50))
         total.textAlignment = NSTextAlignment.center
         total.font = UIFont.systemFont(ofSize: 32)
-        total.text = "合計栄養素"
+        total.text = "合計栄養素(標準値)"
         scrollView.addSubview(total)
         
-        let capacity: UILabel = UILabel(frame: CGRect(x: 80,y: 100+250*num+60,width: Int(appDelegate.screenWidth!),height:50))
+        let capacity: UILabel = UILabel(frame: CGRect(x: 40,y: 100+250*num+60,width: Int(appDelegate.screenWidth!),height:50))
         capacity.textAlignment = NSTextAlignment.left
-        capacity.text = "内容量:          \(String(round(Cap*10)/10))  g"
+        capacity.text = "内容量:  \(String(round(Cap*10)/10))  g"
         capacity.font = UIFont.systemFont(ofSize: 20)
         scrollView.addSubview(capacity)
         
-        let calorie: UILabel = UILabel(frame: CGRect(x: 80,y: 100+250*num+120,width: Int(appDelegate.screenWidth!),height:50))
+        let calorie: UILabel = UILabel(frame: CGRect(x: 40,y: 100+250*num+120,width: Int(appDelegate.screenWidth!),height:50))
         calorie.textAlignment = NSTextAlignment.left
-        calorie.text = "カロリー:      \(String(round(Double(Cal*10))/10))  kcal"
+        calorie.text = "カロリー:      \(String(round(Double(Cal*10))/10))  kcal (\(String(round(appDelegate.recal*10)/10))kcal)"
         calorie.font = UIFont.systemFont(ofSize: 20)
         scrollView.addSubview(calorie)
         
-        let protein: UILabel = UILabel(frame: CGRect(x: 80,y: 100+250*num+180,width: Int(appDelegate.screenWidth!),height:50))
+        let protein: UILabel = UILabel(frame: CGRect(x: 40,y: 100+250*num+180,width: Int(appDelegate.screenWidth!),height:50))
         protein.textAlignment = NSTextAlignment.left
-        protein.text = "タンパク質:  \(String(round(Protein*10)/10))  g"
+        protein.text = "タンパク質:  \(String(round(Protein*10)/10))  g (\(String(round(appDelegate.reprotein*10)/10))g)"
         protein.font = UIFont.systemFont(ofSize: 20)
         scrollView.addSubview(protein)
         
-        let lipid: UILabel = UILabel(frame: CGRect(x: 80,y: 100+250*num+240,width: Int(appDelegate.screenWidth!),height:50))
+        let lipid: UILabel = UILabel(frame: CGRect(x: 40,y: 100+250*num+240,width: Int(appDelegate.screenWidth!),height:50))
         lipid.textAlignment = NSTextAlignment.left
-        lipid.text = "脂質:               \(String(round(Lipid*10)/10))  g"
+        lipid.text = "脂質:               \(String(round(Lipid*10)/10))  g (\(String(round(appDelegate.relipid*10)/10))g)"
         lipid.font = UIFont.systemFont(ofSize: 20)
         scrollView.addSubview(lipid)
         
-        let carbo: UILabel = UILabel(frame: CGRect(x: 80,y: 100+250*num+300,width: Int(appDelegate.screenWidth!),height:50))
+        let carbo: UILabel = UILabel(frame: CGRect(x: 40,y: 100+250*num+300,width: Int(appDelegate.screenWidth!),height:50))
         carbo.textAlignment = NSTextAlignment.left
-        carbo.text = "炭水化物:      \(String(round(Carbo*10)/10))  g"
+        carbo.text = "炭水化物:      \(String(round(Carbo*10)/10))  g (\(String(round(appDelegate.recarbo*10)/10))g)"
         carbo.font = UIFont.systemFont(ofSize: 20)
         scrollView.addSubview(carbo)
         
-        let sodium: UILabel = UILabel(frame: CGRect(x:80,y: 100+250*num+360,width: Int(appDelegate.screenWidth!),height:50))
+        let sodium: UILabel = UILabel(frame: CGRect(x:40,y: 100+250*num+360,width: Int(appDelegate.screenWidth!),height:50))
         sodium.textAlignment = NSTextAlignment.left
-        sodium.text = "ナトリウム:  \(String(round(Sodium*10)/10/1000))   g"
+        sodium.text = "ナトリウム:  \(String(round(Sodium*10)/10/1000))  g (\(String(round(appDelegate.resodium*10)/10))g)"
         sodium.font = UIFont.systemFont(ofSize: 20)
         scrollView.addSubview(sodium)
         
@@ -126,9 +125,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate{
         scrollView.addSubview(nextButton)
         
         self.view.addSubview(scrollView)
-        
-        
-
+        appDelegate.selectedFoods.removeAll()
     }
     
     override func didReceiveMemoryWarning() {
