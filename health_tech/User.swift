@@ -9,9 +9,9 @@
 import RealmSwift
 
 class User: Object {
-    @objc dynamic var sex = ""
+    @objc dynamic var sex:Bool = true
     @objc dynamic var age = 0
     @objc dynamic var height: Double = 0
     @objc dynamic var weight: Double = 0
-    @objc dynamic var request = ""
+    @objc dynamic var request = 0
 }

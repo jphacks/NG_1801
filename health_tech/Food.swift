@@ -11,10 +11,12 @@ import RealmSwift
 class Food: Object {
     @objc dynamic var id = 0
     @objc dynamic var name = ""
-    @objc dynamic var kcal = 0
+    @objc dynamic var cal = 0
     @objc dynamic var gram: Double = 0
     @objc dynamic var protein: Double = 0
-    @objc dynamic var Lipid: Double = 0
+    @objc dynamic var lipid: Double = 0
     @objc dynamic var carbohydrate: Double = 0
-    @objc dynamic var Genre = ""
+    @objc dynamic var sodium: Double = 0
+    @objc dynamic var genre = 0
+    @objc dynamic var url = ""
 }

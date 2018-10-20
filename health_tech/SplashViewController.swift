@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let realm = try! Realm()
+        let foods = realm.objects(Food.self).filter("cal < 50")
+        for i in 0..<foods.count {
+            let food:Food = foods[i]
+            print(food.name)
+        }
         
         //AppDelegateのインスタンスを取得
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
