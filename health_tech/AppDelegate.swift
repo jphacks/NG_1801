@@ -13,7 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    var myNavigationController: UINavigationController?
+    // スクリーンの横縦幅
+    var screenWidth:CGFloat?
+    var screenHeight:CGFloat?
+    var statusBarHeight:CGFloat?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let first: SplashViewController = SplashViewController()
