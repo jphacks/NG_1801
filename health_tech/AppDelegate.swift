@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //計算結果の値
     var bmi_score:Double = 0
-    var bmi = 0
+    var bmi = ""
     var required_cal:Double = 0
     var required_protein:Double = 0
     var required_lipid:Double = 0
@@ -186,18 +186,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             bmi_score = users[0].weight / (users[0].height * 0.01 * users[0].height * 0.01)
             bmi_score = round(bmi_score * 10) / 10
             switch bmi_score{
-            case (0...18.5): //低体重
-                bmi = 1
-            case (18.5...25): //普通体重
-                bmi = 2
-            case (25...30): //肥満度1
-                bmi = 3
-            case (30...35): //肥満度2
-                bmi = 4
-            case (35...40): //肥満度3
-                bmi = 5
-            default: //肥満度4
-                bmi = 6
+            case (0...18.5):
+                bmi = "低体重"
+            case (18.5...25):
+                bmi = "普通体重"
+            case (25...30):
+                bmi = "肥満度1"
+            case (30...35):
+                bmi = "肥満度2"
+            case (35...40):
+                bmi = "肥満度3"
+            default:
+                bmi = "肥満度4"
             }
             print("BMI")
             print(bmi_score)
@@ -306,11 +306,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("必要タンパク質")
             print(required_protein)
             
-            required_lipid = required_cal * 3 / 45
+            required_lipid = round(required_cal * 3 / 45 * 10) / 10
             print("必要脂質")
             print(required_lipid)
             
-            required_carbo = required_cal * 3 / 20
+            required_carbo = round(required_cal * 3 / 20 * 10) / 10
             print("必要炭水化物")
             print(required_carbo)
             
