@@ -187,17 +187,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             bmi_score = round(bmi_score * 10) / 10
             switch bmi_score{
             case (0...18.5):
-                bmi = "低体重"
+                bmi = "痩せ型"
             case (18.5...25):
                 bmi = "普通体重"
             case (25...30):
-                bmi = "肥満度1"
+                bmi = "やや肥満型"
             case (30...35):
-                bmi = "肥満度2"
+                bmi = "肥満型"
             case (35...40):
-                bmi = "肥満度3"
+                bmi = "とても肥満型"
             default:
-                bmi = "肥満度4"
+                bmi = "要注意"
             }
             print("BMI")
             print(bmi_score)
