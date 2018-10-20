@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //食品のid
     var foodId = 0
     
+    //食事の時間(0:朝、1:昼、2:夜)
+    var time = 0
+    
     //嫌いなものリスト
     var rejectFood = [Int]()
     
