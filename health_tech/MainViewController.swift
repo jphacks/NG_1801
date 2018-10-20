@@ -46,5 +46,4 @@ class MainViewController: UIViewController {
         let nextvc = ConditionViewController()
         self.present(nextvc, animated: true, completion: nil)
     }
-    
 }
