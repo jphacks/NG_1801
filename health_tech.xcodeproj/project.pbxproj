@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		293FA780217B50E3004D1C67 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 293FA77F217B50E3004D1C67 /* background.png */; };
 		44A96B04217484D70038ABE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A96B03217484D70038ABE1 /* AppDelegate.swift */; };
 		44A96B06217484D70038ABE1 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A96B05217484D70038ABE1 /* SplashViewController.swift */; };
 		44A96B0B217484DA0038ABE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44A96B0A217484DA0038ABE1 /* Assets.xcassets */; };
@@ -48,7 +47,6 @@
 		10F38432B47CCA1E54B8D530 /* Pods-health_tech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_tech.debug.xcconfig"; path = "Pods/Target Support Files/Pods-health_tech/Pods-health_tech.debug.xcconfig"; sourceTree = "<group>"; };
 		177B2EF43CFFAB3E40FFD4D0 /* Pods_health_techUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_health_techUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		290A488AF71923D9CEB8E701 /* Pods-health_techUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_techUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-health_techUITests/Pods-health_techUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		293FA77F217B50E3004D1C67 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../../../Downloads/background.png; sourceTree = "<group>"; };
 		2B4F836245C1E6BBDF85E06B /* Pods-health_techUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_techUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-health_techUITests/Pods-health_techUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2F2991D701F49E34C862CA92 /* Pods-health_techTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_techTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-health_techTests/Pods-health_techTests.release.xcconfig"; sourceTree = "<group>"; };
 		44A96B00217484D70038ABE1 /* health_tech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = health_tech.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,7 +128,6 @@
 			children = (
 				44A96B03217484D70038ABE1 /* AppDelegate.swift */,
 				44A96B05217484D70038ABE1 /* SplashViewController.swift */,
-				293FA77F217B50E3004D1C67 /* background.png */,
 				44A96B0A217484DA0038ABE1 /* Assets.xcassets */,
 				44A96B0C217484DA0038ABE1 /* LaunchScreen.storyboard */,
 				44A96B0F217484DA0038ABE1 /* Info.plist */,
@@ -295,7 +292,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				44A96B0E217484DA0038ABE1 /* LaunchScreen.storyboard in Resources */,
-				293FA780217B50E3004D1C67 /* background.png in Resources */,
 				44A96B0B217484DA0038ABE1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

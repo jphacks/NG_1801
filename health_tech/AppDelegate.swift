@@ -74,6 +74,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             print("データベース更新")
         }
+    
+        calculation()
+
+//        if (users.count > 0){
+//            print("ユーザーデータが存在します")
+//            user = users.first!
+//            user_flag = true
+//            if(user.sex){
+//                segment.selectedSegmentIndex = 0
+//            }else{
+//                segment.selectedSegmentIndex = 1
+//            }
+//            HeightTextfield.text = String(user.height)
+//            WeightTextfield.text = String(user.weight)
+//            AgeTextfield.text = String(user.age)
+//            picker.selectRow(user.request, inComponent: 0, animated: true)
+//
+//        }else{
+//            print("ユーザーデータが存在しません")
+//            user_flag = false
+//        }
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = SplashViewController()
@@ -119,7 +140,179 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    
+    func calculation(){
+        //ユーザー情報取得
+        let realm = try! Realm()
+        let users = realm.objects(User.self)
+        //        print(users)
+        let bmi_score = users[0].weight / (users[0].height * 0.01 * users[0].height * 0.01)
+        var bmi = 0
+        switch bmi_score{
+        case (0...18.5): //低体重
+            bmi = 1
+        case (18.5...25): //普通体重
+            bmi = 2
+        case (25...30): //肥満度1
+            bmi = 3
+        case (30...35): //肥満度2
+            bmi = 4
+        case (35...40): //肥満度3
+            bmi = 5
+        default: //肥満度4
+            bmi = 6
+        }
+        print("BMIスコア")
+        print(bmi_score)
+        print("BMI")
+        print(bmi)
+        
+        var required_cal:Double = 0
+        if(users[0].sex){
+            switch users[0].age{
+            case (0...2): //年齢
+                required_cal = 700 * 1.35 //male
+            case (3...5):
+                required_cal = 900 * 1.45
+            case (6...7):
+                required_cal = 980 * 1.55
+            case (8...9):
+                required_cal = 1140 * 1.60
+            case (10...11):
+                required_cal = 1330 * 1.65
+            case (12...14):
+                required_cal = 1520 * 1.65
+            case (15...17):
+                required_cal = 1610 * 1.75
+            case (18...29):
+                required_cal = 1520 * 1.75
+            case (30...49):
+                required_cal = 1530 * 1.75
+            case (50...69):
+                required_cal = 1400 * 1.75
+            default:
+                required_cal = 1290 * 1.70
+            }
+        }else{
+            switch users[0].age{
+            case (0...2): //年齢
+                required_cal = 660 * 1.35 //female
+            case (3...5):
+                required_cal = 840 * 1.45
+            case (6...7):
+                required_cal = 920 * 1.55
+            case (8...9):
+                required_cal = 1050 * 1.60
+            case (10...11):
+                required_cal = 1260 * 1.65
+            case (12...14):
+                required_cal = 1410 * 1.65
+            case (15...17):
+                required_cal = 1310 * 1.75
+            case (18...29):
+                required_cal = 1110 * 1.75
+            case (30...49):
+                required_cal = 1150 * 1.75
+            case (50...69):
+                required_cal = 1110 * 1.75
+            default:
+                required_cal = 1020 * 1.70
+            }
+        }
+        if(users[0].request == 1){
+            required_cal = required_cal * 0.8
+        }
+        print("必要カロリー")
+        print(required_cal)
+        
+        var required_protein:Double = 0
+        if(users[0].sex){
+            switch users[0].age{
+            case (0...2): //年齢
+                required_protein = 20
+            case (3...5):
+                required_protein = 25
+            case (6...7):
+                required_protein = 35 //male
+            case (8...9):
+                required_protein = 40
+            case (10...11):
+                required_protein = 50
+            case (12...14):
+                required_protein = 60
+            case (15...17):
+                required_protein = 65
+            default:
+                required_protein = 60
+            }
+        }else{
+            switch users[0].age{
+            case (0...2): //年齢
+                required_protein = 20
+            case (3...5):
+                required_protein = 25
+            case (6...7):
+                required_protein = 30 //female
+            case (8...9):
+                required_protein = 40
+            case (10...11):
+                required_protein = 50
+            case (12...14):
+                required_protein = 55
+            case (15...17):
+                required_protein = 55
+            default:
+                required_protein = 50
+            }
+        }
+        if(users[0].request == 2){
+            required_protein = required_protein * 1.5
+        }
+        print("必要タンパク質")
+        print(required_protein)
+        
+        let required_lipid = 25
+        print("必要脂質")
+        print(required_lipid)
+        
+        let required_carbo = 60
+        print("必要炭水化物")
+        print(required_carbo)
+        
+        var required_sodium:Double = 0
+        if(users[0].sex){
+            switch users[0].age{
+            case (0...2): //年齢
+                required_sodium = 3.0 //male
+            case (3...5):
+                required_sodium = 4.0
+            case (6...7):
+                required_sodium = 5.0
+            case (8...9):
+                required_sodium = 5.5
+            case (10...11):
+                required_sodium = 6.5
+            default:
+                required_sodium = 8.0
+            }
+        }else{
+            switch users[0].age{
+            case (0...2): //年齢
+                required_sodium = 3.5 //female
+            case (3...5):
+                required_sodium = 4.5
+            case (6...7):
+                required_sodium = 5.5
+            case (8...9):
+                required_sodium = 6.0
+            case (10...11):
+                required_sodium = 7.0
+            default:
+                required_sodium = 7.0
+            }
+        }
+        print("ナトリウム")
+        print(required_sodium)
+    }
     
     
 }
