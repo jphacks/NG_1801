@@ -25,30 +25,30 @@ class MainView: UIView {
         self.button1.setTitle("button1", for: .normal)
         self.button1.tintColor = UIColor.black
         self.button1.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-
+        
         
         self.button2 = UIButton(type: .system)
         self.button2.setTitle("button2", for: .normal)
         self.button2.tintColor = UIColor.black
         self.button2.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-
-
+        
+        
         
         // `mainLabel` の設定が全て終わりましたので、親クラスを初期化します。
         super.init(frame: frame)
         
         // `MainView` クラスの背景色を白に設定します。
         self.backgroundColor = .white
-       
-//        self.button1.addTarget(self, action: #selector(onTappedPush1(_:)), for: .touchUpInside)
-//        self.button2.addTarget(self, action: #selector(onTappedPush2(_:)), for: .touchUpInside)
+        
+        //        self.button1.addTarget(self, action: #selector(onTappedPush1(_:)), for: .touchUpInside)
+        //        self.button2.addTarget(self, action: #selector(onTappedPush2(_:)), for: .touchUpInside)
         
         // `MainView` に `mainLabel` を表示します。
         self.addSubview(mainLabel)
         self.addSubview(button1)
         self.addSubview(button2)
         
-
+        
         
     }
     
@@ -82,24 +82,24 @@ class MainView: UIView {
         
     }
     
-//    @objc func onTappedPush1(_ sender: UIButton) {
-//        print(sender)
-//        let vc = NextViewController()
-//        self.presen
-//    }
-//
-//    @objc func onTappedPush2(_ sender: UIButton) {
-//        print(sender)
-//        let vc2 = SecondViewController()
-//    }
+    //    @objc func onTappedPush1(_ sender: UIButton) {
+    //        print(sender)
+    //        let vc = NextViewController()
+    //        self.presen
+    //    }
+    //
+    //    @objc func onTappedPush2(_ sender: UIButton) {
+    //        print(sender)
+    //        let vc2 = SecondViewController()
+    //    }
     
     
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }
