@@ -19,8 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var statusBarHeight:CGFloat?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let first: SplashViewController = SplashViewController()
+        myNavigationController = UINavigationController(rootViewController: first)
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = SplashViewController()
+        window?.rootViewController = myNavigationController
         window?.makeKeyAndVisible()
         
         return true
