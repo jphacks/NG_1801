@@ -45,52 +45,61 @@ class MainViewController: UIViewController {
         //Viewにナビゲーションバーを追加
         view.addSubview(navBar)
         
-        let sex: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 110,width: self.view.bounds.width,height:50))
+        let base: UILabel = UILabel(frame: CGRect(x: 0,y: 70,width: self.view.bounds.width,height:50))
+        base.text = "基本情報"
+        base.font = UIFont.systemFont(ofSize: 30)
+        base.textColor = UIColor.white
+        base.textAlignment = NSTextAlignment.center
+        base.backgroundColor = UIColor.blue
+        self.view.addSubview(base)
+        
+        let sex: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 130,width: self.view.bounds.width,height:50))
         sex.text = "性別:          \(Sex)"
         sex.font = UIFont.systemFont(ofSize: 30)
         self.view.addSubview(sex)
         
-        let height: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 150,width: self.view.bounds.width,height:50))
+        let height: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 170,width: self.view.bounds.width,height:50))
         height.text = "身長:          \(user.height)  cm"
         height.font = UIFont.systemFont(ofSize: 30)
         self.view.addSubview(height)
         
-        let weight: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 190,width: self.view.bounds.width,height:50))
+        let weight: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 210,width: self.view.bounds.width,height:50))
         weight.text = "体重:          \(user.weight)    kg"
         weight.font = UIFont.systemFont(ofSize: 30)
         self.view.addSubview(weight)
         
-        let age: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 230,width: self.view.bounds.width,height:50))
+        let age: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 250,width: self.view.bounds.width,height:50))
         age.text = "年齢:          \(user.age)        歳"
         age.font = UIFont.systemFont(ofSize: 30)
         self.view.addSubview(age)
         
-        let request: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 270,width: self.view.bounds.width,height:50))
+        let request: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 290,width: self.view.bounds.width,height:50))
         request.text = "目的:   \(Request)        "
         request.font = UIFont.systemFont(ofSize: 30)
         self.view.addSubview(request)
         
-        let bmiScore: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 310,width: self.view.bounds.width,height:50))
-        bmiScore.text = "BMI:   \(appDelegate.bmi_score)        "
+        let bmiScore: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 350,width: self.view.bounds.width,height:50))
+        bmiScore.text = " BMI:         \(appDelegate.bmi_score)        "
         bmiScore.font = UIFont.systemFont(ofSize: 30)
         self.view.addSubview(bmiScore)
         
-        let bmi: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 350,width: self.view.bounds.width,height:50))
-        bmi.text = "肥満度:   \(appDelegate.bmi)        "
+        let bmi: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-230)/5),y: 390,width: self.view.bounds.width,height:50))
+        bmi.text = "肥満度:           \(appDelegate.bmi)        "
         bmi.font = UIFont.systemFont(ofSize: 30)
         self.view.addSubview(bmi)
         
-        let required_cal: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/5),y: 390,width: self.view.bounds.width,height:50))
-        required_cal.text = "肥満度:   \(appDelegate.required_cal)   kcal     "
+        let required_cal: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-250)/10),y: 430,width: self.view.bounds.width,height:50))
+        required_cal.text = "必要カロリー:  \(appDelegate.required_cal)  kcal     "
         required_cal.font = UIFont.systemFont(ofSize: 30)
         self.view.addSubview(required_cal)
         
         
         let nextButton = UIButton()
-        nextButton.frame = CGRect(x:((appDelegate.screenWidth!-100)/2),y:appDelegate.screenHeight!-50*2,width:100,height:50)
+        nextButton.frame = CGRect(x:((appDelegate.screenWidth!-200)/2),y:appDelegate.screenHeight!-80*2,width:200,height:100)
         nextButton.setTitle("食事をする", for: .normal)
         nextButton.setTitleColor(UIColor.black, for: .normal)
         nextButton.tintColor = UIColor.black
+        nextButton.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         nextButton.layer.borderColor = UIColor.black.cgColor
         nextButton.layer.borderWidth = 1
         nextButton.backgroundColor = UIColor.white
