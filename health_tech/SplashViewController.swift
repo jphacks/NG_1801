@@ -40,7 +40,7 @@ class SplashViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //遅延処理
-        let dispatchTime = DispatchTime.now() + 3
+        let dispatchTime = DispatchTime.now() + 2
         DispatchQueue.main.asyncAfter( deadline: dispatchTime ) {
             //ユーザー情報の確認
             let realm = try! Realm()
