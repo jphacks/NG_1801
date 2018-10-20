@@ -4,7 +4,7 @@ import RealmSwift
 class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     
     // 選択肢
-    let dataList = ["バランスの良い食事がしたい", "痩せたい", "筋肉をつけたい"]
+    let dataList = ["バランスの良い食事", "痩せたい", "筋肉をつけたい"]
     let array = ["男性", "女性"]
     
     var user_flag = false
@@ -23,13 +23,15 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var picker:UIPickerView = UIPickerView()
     var SaveButton:UIButton = UIButton()
     
+    var appDelegate:AppDelegate = AppDelegate()
+    
     //@IBOutlet weak var HeightTextfield: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //AppDelegateのインスタンスを取得
-        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         //背景の色を変える
         self.view.backgroundColor = UIColor.white
@@ -214,6 +216,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 print("ユーザー登録完了")
             }
         }
+        appDelegate.calculation()
         //メイン画面へ遷移
         self.present(MainViewController(), animated: true, completion: nil)
     }
