@@ -1,10 +1,10 @@
 import UIKit
 import RealmSwift
 
-class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     
     // 選択肢
-    let dataList = ["偏りのない食事がしたい", "痩せたい", "量を食べたい"]
+    let dataList = ["バランスの良い食事がしたい", "痩せたい", "筋肉をつけたい"]
     let array = ["男性", "女性"]
     
     var user_flag = false
@@ -21,6 +21,9 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var WeightTextfield:UITextField = UITextField()
     var AgeTextfield:UITextField = UITextField()
     var picker:UIPickerView = UIPickerView()
+    var SaveButton:UIButton = UIButton()
+    
+    //@IBOutlet weak var HeightTextfield: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,81 +34,77 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         //背景の色を変える
         self.view.backgroundColor = UIColor.white
         
+        //保存ボタンを非表示にする
+        SaveButton.isEnabled = false
+        
         //性別の入力
         segment = UISegmentedControl(items: array as [AnyObject])
         segment.selectedSegmentIndex = 0
-        //segmentの位置を設定
         segment.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
-        segment.frame = CGRect(x: ((appDelegate.screenWidth!-appDelegate.screenWidth!*0.7)/2),y: 100,width:appDelegate.screenWidth!*0.7 ,height:50)
-        //ボタンを押した時の処理を設定
+        segment.frame = CGRect(x: ((appDelegate.screenWidth!-appDelegate.screenWidth!*0.7)/2),y: 100,width:appDelegate.screenWidth!*0.7 ,height:40)
         segment.addTarget(self, action: #selector(SettingViewController.change(segment:)), for: UIControl.Event.valueChanged)
         //ViewにsegmentをsubViewとして追加
         self.view.addSubview(segment)
         
+        //数値入力
+        let numberToolbar: UIToolbar = UIToolbar()
+        numberToolbar.barStyle = UIBarStyle.blackTranslucent
+        numberToolbar.items=[
+            UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action:#selector(self.cancel)),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(title: "Enter", style: UIBarButtonItem.Style.plain, target: self, action:#selector(self.enter))
+        ]
+        numberToolbar.sizeToFit()
+        
+        
         //身長の入力
-        //textfieldの位置とサイズを設定
-        HeightTextfield.frame = CGRect(x: ((appDelegate.screenWidth!-appDelegate.screenWidth!*0.7)/2),y: 200,width:appDelegate.screenWidth!*0.7 ,height:50)
-        //アウトラインを表示
+        HeightTextfield.delegate = self
+        HeightTextfield.frame = CGRect(x: ((appDelegate.screenWidth!-appDelegate.screenWidth!*0.7)/2),y: 180,width:appDelegate.screenWidth!*0.7 ,height:40)
         HeightTextfield.borderStyle = .roundedRect
-        //入力している文字を全消しするclearボタンを設定(書いている時のみの設定)
         HeightTextfield.clearButtonMode = .whileEditing
-        //改行ボタンを完了ボタンに変更
-        HeightTextfield.returnKeyType = .done
-        //文字が何も入力されていない時に表示される文字(薄っすら見える文字)
         HeightTextfield.placeholder = "身長[cm]を入力してください"
         //数値のみの入力を受け付ける
         HeightTextfield.keyboardType = UIKeyboardType.numberPad
-        //viewにtextfieldをsubviewとして追加
+        HeightTextfield.inputAccessoryView = numberToolbar
         self.view.addSubview(HeightTextfield)
         
         //体重の入力
-        //textfieldの位置とサイズを設定
-        WeightTextfield.frame = CGRect(x: ((appDelegate.screenWidth!-appDelegate.screenWidth!*0.7)/2),y: 300,width:appDelegate.screenWidth!*0.7 ,height:50)
-        //アウトラインを表示
+        WeightTextfield.frame = CGRect(x: ((appDelegate.screenWidth!-appDelegate.screenWidth!*0.7)/2),y: 260,width:appDelegate.screenWidth!*0.7 ,height:40)
         WeightTextfield.borderStyle = .roundedRect
-        //入力している文字を全消しするclearボタンを設定(書いている時のみの設定)
         WeightTextfield.clearButtonMode = .whileEditing
-        //改行ボタンを完了ボタンに変更
-        WeightTextfield.returnKeyType = .done
-        //文字が何も入力されていない時に表示される文字(薄っすら見える文字)
         WeightTextfield.placeholder = "体重[kg]を入力してください"
         //数値のみの入力を受け付ける
         WeightTextfield.keyboardType = UIKeyboardType.numberPad
-        //viewにtextfieldをsubviewとして追加
+        WeightTextfield.inputAccessoryView = numberToolbar
         self.view.addSubview(WeightTextfield)
         
         //年齢の入力
-        //textfieldの位置とサイズを設定
-        AgeTextfield.frame = CGRect(x: ((appDelegate.screenWidth!-appDelegate.screenWidth!*0.7)/2),y: 400,width:appDelegate.screenWidth!*0.7 ,height:50)
-        //アウトラインを表示
+        AgeTextfield.frame = CGRect(x: ((appDelegate.screenWidth!-appDelegate.screenWidth!*0.7)/2),y: 340,width:appDelegate.screenWidth!*0.7 ,height:40)
         AgeTextfield.borderStyle = .roundedRect
-        //入力している文字を全消しするclearボタンを設定(書いている時のみの設定)
         AgeTextfield.clearButtonMode = .whileEditing
-        //改行ボタンを完了ボタンに変更
-        AgeTextfield.returnKeyType = .done
-        //文字が何も入力されていない時に表示される文字(薄っすら見える文字)
         AgeTextfield.placeholder = "年齢[歳]を入力してください"
         //数値のみの入力を受け付ける
         AgeTextfield.keyboardType = UIKeyboardType.numberPad
-        //viewにtextfieldをsubviewとして追加
+        AgeTextfield.inputAccessoryView = numberToolbar
         self.view.addSubview(AgeTextfield)
         
-    
         //目的の入力
+        let name: UILabel = UILabel(frame: CGRect(x: ((appDelegate.screenWidth!-200)/2),y: 420,width: 400,height:40))
+        name.text = "目的を選択してください"
+        name.font = UIFont.systemFont(ofSize: 20)
+        self.view.addSubview(name)
         // ピッカーの作成
-        picker = UIPickerView(frame: CGRect(x: ((appDelegate.screenWidth!-appDelegate.screenWidth!*0.7)/2),y: 475,width:appDelegate.screenWidth!*0.7 ,height:100))
-        // プロトコルの設定
+        picker = UIPickerView(frame: CGRect(x: ((appDelegate.screenWidth!-appDelegate.screenWidth!*0.7)/2),y: 460,width:appDelegate.screenWidth!*0.7 ,height:100))
         picker.delegate = self
         picker.dataSource = self
-        // はじめに表示する項目を指定
-        picker.selectRow(1, inComponent: 0, animated: true)
-        // 画面にピッカーを追加
+        picker.selectRow(0, inComponent: 0, animated: true)
         self.view.addSubview(picker)
         
         //保存ボタン
-        let SaveButton = UIButton()
         SaveButton.frame = CGRect(x:((appDelegate.screenWidth!-100)/2),y:600,width:100,height:50)
         SaveButton.setTitle("完了", for: .normal)
+        SaveButton.layer.borderColor = UIColor.black.cgColor
+        SaveButton.layer.borderWidth = 1
         SaveButton.setTitleColor(UIColor.black, for: .normal)
         SaveButton.tintColor = UIColor.black
         SaveButton.backgroundColor = UIColor.white
@@ -148,6 +147,17 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         navBar.pushItem(navItem, animated: true)
         //Viewにナビゲーションバーを追加
         view.addSubview(navBar)
+        
+        let strHeight : String = HeightTextfield.text ?? ""
+        height = Double(strHeight) ?? 0
+        let strWeight : String = WeightTextfield.text ?? ""
+        weight = Double(strWeight) ?? 0
+        let strAge : String = AgeTextfield.text ?? ""
+        age = Int(strAge) ?? 0
+    
+        if(height>0 && weight>0 && age>0){
+            SaveButton.isEnabled = true;
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -175,9 +185,6 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
 
     @objc func save(_ sender: UIButton) {
-        height = Double(HeightTextfield.text!)!
-        weight = Double(WeightTextfield.text!)!
-        age = Int(AgeTextfield.text!)!
         //Realmオブジェクト生成
         let realm = try! Realm()
         
@@ -229,5 +236,28 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         // 選択時の処理
         request = row
         print(dataList[row])
+    }
+    
+    @objc func cancel(_ sender: UIButton) {
+        HeightTextfield.resignFirstResponder()
+        WeightTextfield.resignFirstResponder()
+        AgeTextfield.resignFirstResponder()
+    }
+    
+    @objc func enter(_ sender: UIButton) {
+        let strHeight : String = HeightTextfield.text ?? ""
+        height = Double(strHeight) ?? 0
+        let strWeight : String = WeightTextfield.text ?? ""
+        weight = Double(strWeight) ?? 0
+        let strAge : String = AgeTextfield.text ?? ""
+        age = Int(strAge) ?? 0
+        
+        HeightTextfield.resignFirstResponder()
+        WeightTextfield.resignFirstResponder()
+        AgeTextfield.resignFirstResponder()
+        
+        if(height>0 && weight>0 && age>0){
+            SaveButton.isEnabled = true;
+        }
     }
 }
