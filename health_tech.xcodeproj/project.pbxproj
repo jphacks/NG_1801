@@ -20,7 +20,6 @@
 		44AEE053217A62B600CA71BE /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEE04E217A62B600CA71BE /* ChoiceViewController.swift */; };
 		44AEE054217A62B600CA71BE /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEE04F217A62B600CA71BE /* ResultViewController.swift */; };
 		44AEE055217A62B600CA71BE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEE050217A62B600CA71BE /* SettingViewController.swift */; };
-		44FE903521757DEC00E1AA64 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE903421757DEC00E1AA64 /* MainView.swift */; };
 		ABDD1C2D1739822DE95EFA0B /* Pods_health_techTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6687A32566C49FFB4B7F804 /* Pods_health_techTests.framework */; };
 		BB949E12242B3E94262775CB /* Pods_health_tech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E72F80652851F099585B3A9 /* Pods_health_tech.framework */; };
 		E6F8D4A80854D7407CA59503 /* Pods_health_techUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177B2EF43CFFAB3E40FFD4D0 /* Pods_health_techUITests.framework */; };
@@ -69,7 +68,6 @@
 		44AEE04E217A62B600CA71BE /* ChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
 		44AEE04F217A62B600CA71BE /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		44AEE050217A62B600CA71BE /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		44FE903421757DEC00E1AA64 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		641F5D7CD16C76578A5127AC /* Pods-health_techTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_techTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-health_techTests/Pods-health_techTests.debug.xcconfig"; sourceTree = "<group>"; };
 		676F6C5B42F1848512EE67D0 /* Pods-health_tech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_tech.release.xcconfig"; path = "Pods/Target Support Files/Pods-health_tech/Pods-health_tech.release.xcconfig"; sourceTree = "<group>"; };
 		F6687A32566C49FFB4B7F804 /* Pods_health_techTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_health_techTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,7 +128,6 @@
 			children = (
 				44A96B03217484D70038ABE1 /* AppDelegate.swift */,
 				44A96B05217484D70038ABE1 /* SplashViewController.swift */,
-				44FE903421757DEC00E1AA64 /* MainView.swift */,
 				44A96B0A217484DA0038ABE1 /* Assets.xcassets */,
 				44A96B0C217484DA0038ABE1 /* LaunchScreen.storyboard */,
 				44A96B0F217484DA0038ABE1 /* Info.plist */,
@@ -417,7 +414,6 @@
 				44AEE049217A3E5A00CA71BE /* User.swift in Sources */,
 				44A96B06217484D70038ABE1 /* SplashViewController.swift in Sources */,
 				44AEE04B217A3EC600CA71BE /* Food.swift in Sources */,
-				44FE903521757DEC00E1AA64 /* MainView.swift in Sources */,
 				44AEE055217A62B600CA71BE /* SettingViewController.swift in Sources */,
 				44A96B04217484D70038ABE1 /* AppDelegate.swift in Sources */,
 				44AEE053217A62B600CA71BE /* ChoiceViewController.swift in Sources */,
