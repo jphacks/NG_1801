@@ -28,6 +28,8 @@ class MainViewController: UIViewController {
         nextButton.setTitle("食事をする", for: .normal)
         nextButton.setTitleColor(UIColor.black, for: .normal)
         nextButton.tintColor = UIColor.black
+        nextButton.layer.borderColor = UIColor.black.cgColor
+        nextButton.layer.borderWidth = 1
         nextButton.backgroundColor = UIColor.white
         nextButton.addTarget(self, action: #selector(MainViewController.goToCondition(_:)), for: .touchUpInside)
         view.addSubview(nextButton)
