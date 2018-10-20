@@ -150,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //ユーザー情報取得
         let realm = try! Realm()
         let users = realm.objects(User.self)
-        //        print(users)
+        if(users.count>0){
         let bmi_score = users[0].weight / (users[0].height * 0.01 * users[0].height * 0.01)
         var bmi = 0
         switch bmi_score{
@@ -318,7 +318,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         print("ナトリウム")
         print(required_sodium)
+        }
     }
-    
-    
 }
