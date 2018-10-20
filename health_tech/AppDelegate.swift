@@ -13,12 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    // `ViewController` を遅延生成で宣言します
-    private(set) lazy var viewController = SplashViewController()
+    var myNavigationController: UINavigationController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let first: SplashViewController = SplashViewController()
+        myNavigationController = UINavigationController(rootViewController: first)
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = SplashViewController()
+        window?.rootViewController = myNavigationController
         window?.makeKeyAndVisible()
         
         return true
