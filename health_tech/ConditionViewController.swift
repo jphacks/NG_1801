@@ -7,7 +7,7 @@ class ConditionViewController: UIViewController {
         self.view.backgroundColor = UIColor.gray
         
         let nextButton6 = UIButton(frame: CGRect(x: 100,y: 100,width: 100,height:50))
-        nextButton6.setTitle("button6", for: .normal)
+        nextButton6.setTitle("ToChoice", for: .normal)
         nextButton6.setTitleColor(UIColor.black, for: .normal)
         nextButton6.tintColor = UIColor.black
 //        self.view.backgroundColor = UIColor.white
