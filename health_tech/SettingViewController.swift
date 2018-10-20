@@ -4,7 +4,7 @@ import RealmSwift
 class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     
     // 選択肢
-    let dataList = ["偏りのない食事がしたい", "痩せたい", "量を食べたい"]
+    let dataList = ["バランスの良い食事がしたい", "痩せたい", "筋肉をつけたい"]
     let array = ["男性", "女性"]
     
     var user_flag = false
@@ -40,10 +40,8 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         //性別の入力
         segment = UISegmentedControl(items: array as [AnyObject])
         segment.selectedSegmentIndex = 0
-        //segmentの位置を設定
         segment.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
         segment.frame = CGRect(x: ((appDelegate.screenWidth!-appDelegate.screenWidth!*0.7)/2),y: 100,width:appDelegate.screenWidth!*0.7 ,height:40)
-        //ボタンを押した時の処理を設定
         segment.addTarget(self, action: #selector(SettingViewController.change(segment:)), for: UIControl.Event.valueChanged)
         //ViewにsegmentをsubViewとして追加
         self.view.addSubview(segment)
