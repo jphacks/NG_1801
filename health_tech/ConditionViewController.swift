@@ -6,6 +6,8 @@ class ConditionViewController: UIViewController {
     var nextButton2:UIButton = UIButton()
     var nextButton3:UIButton = UIButton()
     
+    let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white

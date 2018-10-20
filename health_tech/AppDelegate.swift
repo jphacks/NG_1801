@@ -19,6 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var screenHeight:CGFloat?
     var statusBarHeight:CGFloat?
     
+    //食品のid
+    var foodId = 0
+    
+    //嫌いなものリスト
+    var rejectFood = [Int]()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // ここに初期化処理を書く
         // UserDefaultsを使ってフラグを保持する
