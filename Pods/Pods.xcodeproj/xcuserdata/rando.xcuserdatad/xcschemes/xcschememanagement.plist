@@ -6,17 +6,11 @@
 	<dict>
 		<key>Pods-health_tech.xcscheme</key>
 		<dict>
-<<<<<<< HEAD
-=======
-			<key>isShown</key>
-			<false/>
->>>>>>> rando
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 		<key>Pods-health_techTests.xcscheme</key>
 		<dict>
-<<<<<<< HEAD
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
@@ -27,39 +21,9 @@
 		</dict>
 		<key>SnapKit.xcscheme</key>
 		<dict>
-=======
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>Pods-health_techUITests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>Realm.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
-		<key>RealmSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
->>>>>>> rando
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
 	</dict>
-<<<<<<< HEAD
-=======
-	<key>SuppressBuildableAutocreation</key>
-	<dict/>
->>>>>>> rando
 </dict>
 </plist>

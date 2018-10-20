@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import RealmSwift
 
 class MainView: UIView {
     let mainLabel: UILabel
@@ -18,12 +17,7 @@ class MainView: UIView {
         // `mainLabel` を作ります。
         self.mainLabel = UILabel()
         // `mainLabel` の表示テキストを設定します。
-<<<<<<< HEAD
         self.mainLabel.text = "Hello World!"
-=======
-        self.mainLabel.text = "Hello World"
-        
->>>>>>> rando
         // `mainLabel` の表示テキストのセンタリングを設定します。
         self.mainLabel.textAlignment = .center
         
