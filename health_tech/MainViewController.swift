@@ -1,6 +1,6 @@
 import UIKit
 
-class Next2ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,7 +13,7 @@ class Next2ViewController: UIViewController {
 //        self.view.backgroundColor = UIColor.white
         nextButton4.backgroundColor = UIColor.white
         
-        nextButton4.addTarget(self, action: #selector(Next2ViewController.goNext4(_:)), for: .touchUpInside)
+        nextButton4.addTarget(self, action: #selector(MainViewController.goNext4(_:)), for: .touchUpInside)
         view.addSubview(nextButton4)
         
         let nextButton5 = UIButton(frame: CGRect(x: 100,y: 300,width: 100,height:50))
@@ -23,7 +23,7 @@ class Next2ViewController: UIViewController {
 //        self.view.backgroundColor = UIColor.white
         nextButton5.backgroundColor = UIColor.white
         
-        nextButton5.addTarget(self, action: #selector(Next2ViewController.goNext5(_:)), for: .touchUpInside)
+        nextButton5.addTarget(self, action: #selector(MainViewController.goNext5(_:)), for: .touchUpInside)
         view.addSubview(nextButton5)
     }
     
@@ -31,13 +31,13 @@ class Next2ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     @objc func goNext4(_ sender: UIButton) {// selectorで呼び出す場合Swift4からは「@objc」をつける。
-        let nextvc = Next1ViewController()
+        let nextvc = SettingViewController()
 //        nextvc.view.backgroundColor = UIColor.yellow
         self.present(nextvc, animated: true, completion: nil)
     }
     
     @objc func goNext5(_ sender: UIButton) {// selectorで呼び出す場合Swift4からは「@objc」をつける。
-        let nextvc = Next3ViewController()
+        let nextvc = ConditionViewController()
 //        nextvc.view.backgroundColor = UIColor.gray
         self.present(nextvc, animated: true, completion: nil)
     }

@@ -1,6 +1,6 @@
 import UIKit
 
-class Next5ViewController: UIViewController {
+class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         nextButton1.backgroundColor = UIColor.white
         
-        nextButton1.addTarget(self, action: #selector(ViewController.goNext1(_:)), for: .touchUpInside)
+        nextButton1.addTarget(self, action: #selector(SplashViewController.goNext1(_:)), for: .touchUpInside)
         view.addSubview(nextButton1)
         
         let nextButton2 = UIButton(frame: CGRect(x: 100,y: 300,width: 100,height:50))
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         nextButton2.backgroundColor = UIColor.white
         
-        nextButton2.addTarget(self, action: #selector(ViewController.goNext2(_:)), for: .touchUpInside)
+        nextButton2.addTarget(self, action: #selector(SplashViewController.goNext2(_:)), for: .touchUpInside)
         view.addSubview(nextButton2)
     }
     
@@ -38,13 +38,13 @@ class ViewController: UIViewController {
     }
     
     @objc func goNext1(_ sender: UIButton) {// selectorで呼び出す場合Swift4からは「@objc」をつける。
-        let nextvc = Next1ViewController()
+        let nextvc = SettingViewController()
         //        nextvc.view.backgroundColor = UIColor.yellow
         self.present(nextvc, animated: true, completion: nil)
     }
     
     @objc func goNext2(_ sender: UIButton) {// selectorで呼び出す場合Swift4からは「@objc」をつける。
-        let nextvc = Next2ViewController()
+        let nextvc = MainViewController()
         //        nextvc.view.backgroundColor = UIColor.blue
         self.present(nextvc, animated: true, completion: nil)
     }

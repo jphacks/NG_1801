@@ -14,12 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     // `ViewController` を遅延生成で宣言します
-    private(set) lazy var viewController = ViewController()
+    private(set) lazy var viewController = SplashViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = ViewController()
-        //        window?.rootViewController = MainTabBarViewController()
+        window?.rootViewController = SplashViewController()
         window?.makeKeyAndVisible()
         
         return true

@@ -1,6 +1,6 @@
 import UIKit
 
-class Next1ViewController: UIViewController {
+class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,7 +13,7 @@ class Next1ViewController: UIViewController {
 //        self.view.backgroundColor = UIColor.white
         nextButton3.backgroundColor = UIColor.white
         
-        nextButton3.addTarget(self, action: #selector(Next1ViewController.goNext3(_:)), for: .touchUpInside)
+        nextButton3.addTarget(self, action: #selector(SettingViewController.goNext3(_:)), for: .touchUpInside)
         view.addSubview(nextButton3)
     }
     
@@ -21,7 +21,7 @@ class Next1ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     @objc func goNext3(_ sender: UIButton) {// selectorで呼び出す場合Swift4からは「@objc」をつける。
-        let nextvc = Next2ViewController()
+        let nextvc = MainViewController()
 //        nextvc.view.backgroundColor = UIColor.blue
         self.present(nextvc, animated: true, completion: nil)
     }

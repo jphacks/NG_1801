@@ -1,6 +1,6 @@
 import UIKit
 
-class Next4ViewController: UIViewController {
+class ChoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,7 +13,7 @@ class Next4ViewController: UIViewController {
 //        self.view.backgroundColor = UIColor.white
         nextButton7.backgroundColor = UIColor.white
         
-        nextButton7.addTarget(self, action: #selector(Next4ViewController.goNext7(_:)), for: .touchUpInside)
+        nextButton7.addTarget(self, action: #selector(ChoiceViewController.goNext7(_:)), for: .touchUpInside)
         view.addSubview(nextButton7)
     }
     
@@ -21,7 +21,7 @@ class Next4ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     @objc func goNext7(_ sender: UIButton) {// selectorで呼び出す場合Swift4からは「@objc」をつける。
-        let nextvc = Next5ViewController()
+        let nextvc = ResultViewController()
 //        nextvc.view.backgroundColor = UIColor.blue
         self.present(nextvc, animated: true, completion: nil)
     }
