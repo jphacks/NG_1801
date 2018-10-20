@@ -35,8 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var bmi = 0
     var required_cal:Double = 0
     var required_protein:Double = 0
-    let required_lipid:Double = 25
-    let required_carbo:Double = 60
+    var required_lipid:Double = 0
+    var required_carbo:Double = 0
     var required_sodium:Double = 0
     
     //再計算用の値
@@ -306,9 +306,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("必要タンパク質")
             print(required_protein)
             
+            required_lipid = required_cal * 3 / 45
             print("必要脂質")
             print(required_lipid)
             
+            required_carbo = required_cal * 3 / 20
             print("必要炭水化物")
             print(required_carbo)
             
@@ -391,6 +393,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if(compare_data > resodium / required_sodium){
             compare = 3
         }
+    }
+    
+    func choose(food:Food){
+        
     }
     
     func sort_top(){
