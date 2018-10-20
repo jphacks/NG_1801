@@ -12,6 +12,15 @@ class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //AppDelegateのインスタンスを取得
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        // スクリーンの横縦幅
+        appDelegate.screenWidth = self.view.frame.width
+        appDelegate.screenHeight = self.view.frame.height
+        // ステータスバーの高さを取得
+        appDelegate.statusBarHeight = UIApplication.shared.statusBarFrame.height
+        
         let nextButton1 = UIButton(frame: CGRect(x: 100,y: 100,width: 100,height:50))
         nextButton1.setTitle("button1", for: .normal)
         nextButton1.setTitleColor(UIColor.black, for: .normal)

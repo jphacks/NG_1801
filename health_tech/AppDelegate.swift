@@ -13,8 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    // `ViewController` を遅延生成で宣言します
-    private(set) lazy var viewController = SplashViewController()
+    // スクリーンの横縦幅
+    var screenWidth:CGFloat?
+    var screenHeight:CGFloat?
+    var statusBarHeight:CGFloat?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
