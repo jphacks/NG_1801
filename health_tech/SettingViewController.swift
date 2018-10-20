@@ -149,6 +149,17 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         navBar.pushItem(navItem, animated: true)
         //Viewにナビゲーションバーを追加
         view.addSubview(navBar)
+        
+        let strHeight : String = HeightTextfield.text ?? ""
+        height = Double(strHeight) ?? 0
+        let strWeight : String = WeightTextfield.text ?? ""
+        weight = Double(strWeight) ?? 0
+        let strAge : String = AgeTextfield.text ?? ""
+        age = Int(strAge) ?? 0
+    
+        if(height>0 && weight>0 && age>0){
+            SaveButton.isEnabled = true;
+        }
     }
     
     override func didReceiveMemoryWarning() {
