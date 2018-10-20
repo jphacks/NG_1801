@@ -13,8 +13,12 @@ class ResultViewController: UIViewController, UIScrollViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //背景色を白にする
+        //背景画像の変更
         self.view.backgroundColor = UIColor.white
+        let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        bg.image = UIImage(named: "bg.png")
+        bg.layer.zPosition = -1
+        self.view.addSubview(bg)
         
         //AppDelegateのインスタンスを取得
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -43,7 +47,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate{
         let title:UILabel = UILabel(frame: CGRect(x: 0, y: 50, width: Int(appDelegate.screenWidth!), height: 50))
         title.textAlignment = NSTextAlignment.center
         title.font = UIFont.systemFont(ofSize: 32)
-        title.text = "この食事を食べよう！"
+        title.text = "この商品を食べよう！"
         scrollView.addSubview(title)
         
         // ScrollViewの中身を作る
@@ -116,15 +120,16 @@ class ResultViewController: UIViewController, UIScrollViewDelegate{
         let nextButton = UIButton()
         nextButton.frame = CGRect(x:(Int((appDelegate.screenWidth!-200)/2)),y: 560+250*num,width:200,height:50)
         nextButton.setTitle("メイン画面へ", for: .normal)
-        nextButton.setTitleColor(UIColor.black, for: .normal)
-        nextButton.tintColor = UIColor.black
-        nextButton.layer.borderColor = UIColor.black.cgColor
+        nextButton.layer.borderColor = UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0).cgColor
+        nextButton.setTitleColor(UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0), for: .normal)
         nextButton.layer.borderWidth = 1
+        nextButton.layer.cornerRadius = 10.0
         nextButton.backgroundColor = UIColor.white
         nextButton.addTarget(self, action: #selector(goToMain(_:)), for: .touchUpInside)
         scrollView.addSubview(nextButton)
-        
         self.view.addSubview(scrollView)
+        
+        //選択した商品をリセット
         appDelegate.selectedFoods.removeAll()
     }
     
@@ -133,6 +138,6 @@ class ResultViewController: UIViewController, UIScrollViewDelegate{
     }
     //メインページに遷移
     @objc func goToMain(_ sender: UIButton) {
-        self.present(MainViewController(), animated: true, completion: nil)
+        self.present(MainViewController(), animated: false, completion: nil)
     }
 }

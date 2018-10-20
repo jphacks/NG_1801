@@ -7,97 +7,102 @@ class ChoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
         
         let subviews = self.view.subviews
         for subview in subviews {
             subview.removeFromSuperview()
         }
         
+        //背景画像の変更
+        self.view.backgroundColor = UIColor.white
+        let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        bg.image = UIImage(named: "bg.png")
+        bg.layer.zPosition = -1
+        self.view.addSubview(bg)
+        
         //AppDelegateのインスタンスを取得
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
 
-            let realm = try! Realm()
-            let foods = realm.objects(Food.self).filter("cal < 1000")
-            let food:Food = foods[appDelegate.foodId]
-//        let food:Food = foods[76]
+        let realm = try! Realm()
+        let foods = realm.objects(Food.self).filter("cal < 1000")
+        let food:Food = foods[appDelegate.foodId]
         
-            var Name = food.name
-            var Cap = food.gram
-            var Cal = food.cal
-            var Protein = food.protein
-            var Lipid = food.lipid
-            var Carbo = food.carbohydrate
-            var Sodium = food.sodium
-            var Url = food.url
-        print(Url)
-        
-            //画像の取得表示
-            let imageView = SimpleAsyncImageView(frame: CGRect(x: ((self.view.bounds.width-200)/2), y: 100, width: 200, height: 200));
-            imageView.loadImage(urlString: Url);
-            self.view.addSubview(imageView);
-
-            let name: UILabel = UILabel(frame: CGRect(x: 0,y: 300,width: self.view.bounds.width,height:50))
-            name.text = Name
-            name.font = UIFont.systemFont(ofSize: 20)
-            name.textAlignment = NSTextAlignment.center
-            self.view.addSubview(name)
-
-            let capacity: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 330,width: 200,height:50))
-            capacity.text = "内容量:          \(String(Cap))  g"
-            capacity.font = UIFont.systemFont(ofSize: 20)
-            self.view.addSubview(capacity)
-            
-            let calorie: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 360,width: 200,height:50))
-            calorie.text = "カロリー:      \(String(Cal))  kcal"
-            calorie.font = UIFont.systemFont(ofSize: 20)
-            self.view.addSubview(calorie)
-            
-            let protein: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 390,width: 200,height:50))
-            protein.text = "タンパク質:  \(String(Protein))  g"
-            protein.font = UIFont.systemFont(ofSize: 20)
-            self.view.addSubview(protein)
-            
-            let lipid: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 420,width: 200,height:50))
-            lipid.text = "脂質:               \(String(Lipid))  g"
-            lipid.font = UIFont.systemFont(ofSize: 20)
-            self.view.addSubview(lipid)
-            
-            let carbo: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 450,width: 200,height:50))
-            carbo.text = "炭水化物:      \(String(Carbo))  g"
-            carbo.font = UIFont.systemFont(ofSize: 20)
-            self.view.addSubview(carbo)
-            
-            let sodium: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 480,width: 300,height:50))
-            sodium.text = "ナトリウム:  \(String(Sodium))   mg"
-            sodium.font = UIFont.systemFont(ofSize: 20)
-            self.view.addSubview(sodium)
-            
-            let nextButton1 = UIButton(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: self.view.bounds.height-100,width: 100,height:50))
-            nextButton1.setTitle("○", for: .normal)
-            nextButton1.setTitleColor(UIColor.blue, for: .normal)
-            nextButton1.layer.borderColor = UIColor.black.cgColor
-            nextButton1.layer.borderWidth = 3
-            nextButton1.tintColor = UIColor.black
-            nextButton1.backgroundColor = UIColor.white
-            nextButton1.addTarget(self, action: #selector(ChoiceViewController.goNext1(_:)), for: .touchUpInside)
-            view.addSubview(nextButton1)
-            
-            let nextButton2 = UIButton(frame: CGRect(x: ((self.view.bounds.width-100)/4*3),y: self.view.bounds.height-100,width: 100,height:50))
-            nextButton2.setTitle("×", for: .normal)
-            nextButton2.setTitleColor(UIColor.red, for: .normal)
-            nextButton2.layer.borderColor = UIColor.black.cgColor
-            nextButton2.layer.borderWidth = 3
-            nextButton2.tintColor = UIColor.black
-            nextButton2.backgroundColor = UIColor.white
-            nextButton2.addTarget(self, action: #selector(ChoiceViewController.goNext2(_:)), for: .touchUpInside)
-            view.addSubview(nextButton2)
+        var Name = food.name
+        var Cap = food.gram
+        var Cal = food.cal
+        var Protein = food.protein
+        var Lipid = food.lipid
+        var Carbo = food.carbohydrate
+        var Sodium = food.sodium
+        var Url = food.url
+        //画像の取得表示
+        let imageView = SimpleAsyncImageView(frame: CGRect(x: ((self.view.bounds.width-200)/2), y: 100, width: 200, height: 200));
+        imageView.loadImage(urlString: Url);
+        self.view.addSubview(imageView);
+        //商品名
+        let name: UILabel = UILabel(frame: CGRect(x: 0,y: 300,width: self.view.bounds.width,height:50))
+        name.text = Name
+        name.font = UIFont.systemFont(ofSize: 20)
+        name.textAlignment = NSTextAlignment.center
+        self.view.addSubview(name)
+        //内容量
+        let capacity: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 330,width: 200,height:50))
+        capacity.text = "内容量:          \(String(Cap))  g"
+        capacity.font = UIFont.systemFont(ofSize: 20)
+        self.view.addSubview(capacity)
+        //カロリー
+        let calorie: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 360,width: 200,height:50))
+        calorie.text = "カロリー:      \(String(Cal))  kcal"
+        calorie.font = UIFont.systemFont(ofSize: 20)
+        self.view.addSubview(calorie)
+        //タンパク質
+        let protein: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 390,width: 200,height:50))
+        protein.text = "タンパク質:  \(String(Protein))  g"
+        protein.font = UIFont.systemFont(ofSize: 20)
+        self.view.addSubview(protein)
+        //脂質
+        let lipid: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 420,width: 200,height:50))
+        lipid.text = "脂質:               \(String(Lipid))  g"
+        lipid.font = UIFont.systemFont(ofSize: 20)
+        self.view.addSubview(lipid)
+        //炭水化物
+        let carbo: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 450,width: 200,height:50))
+        carbo.text = "炭水化物:      \(String(Carbo))  g"
+        carbo.font = UIFont.systemFont(ofSize: 20)
+        self.view.addSubview(carbo)
+        //ナトリウム
+        let sodium: UILabel = UILabel(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: 480,width: 300,height:50))
+        sodium.text = "ナトリウム:  \(String(Sodium))   mg"
+        sodium.font = UIFont.systemFont(ofSize: 20)
+        self.view.addSubview(sodium)
+        //OKボタン
+        let yesButton = UIButton(frame: CGRect(x: ((self.view.bounds.width-100)/4),y: self.view.bounds.height-100,width: 100,height:50))
+        yesButton.setTitle("◯", for: .normal)
+        yesButton.setTitleColor(UIColor.blue, for: .normal)
+        yesButton.layer.borderColor = UIColor.black.cgColor
+        yesButton.layer.borderWidth = 1
+        yesButton.tintColor = UIColor.black
+        yesButton.backgroundColor = UIColor.white
+        yesButton.layer.cornerRadius = 10.0
+        yesButton.addTarget(self, action: #selector(ChoiceViewController.yes(_:)), for: .touchUpInside)
+        view.addSubview(yesButton)
+        //NOボタン
+        let noButton = UIButton(frame: CGRect(x: ((self.view.bounds.width-100)/4*3),y: self.view.bounds.height-100,width: 100,height:50))
+        noButton.setTitle("×", for: .normal)
+        noButton.setTitleColor(UIColor.red, for: .normal)
+        noButton.layer.borderColor = UIColor.black.cgColor
+        noButton.layer.borderWidth = 1
+        noButton.tintColor = UIColor.black
+        noButton.layer.cornerRadius = 10.0
+        noButton.backgroundColor = UIColor.white
+        noButton.addTarget(self, action: #selector(ChoiceViewController.no(_:)), for: .touchUpInside)
+        view.addSubview(noButton)
         }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    @objc func goNext1(_ sender: UIButton) {
+    @objc func yes(_ sender: UIButton) {
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
 //        appDelegate.foodId += 1
 //            viewDidLoad()
@@ -109,7 +114,7 @@ class ChoiceViewController: UIViewController {
         self.present(nextvc, animated: true, completion: nil)
         }
     }
-    @objc func goNext2(_ sender: UIButton) {
+    @objc func no(_ sender: UIButton) {
         viewDidLoad()
     }
 }

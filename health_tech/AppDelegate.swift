@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //食品のid
     var foodId = 0
     
-
     //選択された食事
     var selectedFoods = [Int]()
     
@@ -57,13 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var rejectFood = [Int]()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // ここに初期化処理を書く
         // UserDefaultsを使ってフラグを保持する
         let userDefault = UserDefaults.standard
         // "firstLaunch"をキーに、Bool型の値を保持する
         let dict = ["firstLaunch": true]
-        // デフォルト値登録
-        // ※すでに値が更新されていた場合は、更新後の値のままになる
         userDefault.register(defaults: dict)
         
         // "firstLaunch"に紐づく値がtrueなら(=初回起動)、値をfalseに更新して処理を行う
@@ -113,25 +109,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     
         calculation()
-
-//        if (users.count > 0){
-//            print("ユーザーデータが存在します")
-//            user = users.first!
-//            user_flag = true
-//            if(user.sex){
-//                segment.selectedSegmentIndex = 0
-//            }else{
-//                segment.selectedSegmentIndex = 1
-//            }
-//            HeightTextfield.text = String(user.height)
-//            WeightTextfield.text = String(user.weight)
-//            AgeTextfield.text = String(user.age)
-//            picker.selectRow(user.request, inComponent: 0, animated: true)
-//
-//        }else{
-//            print("ユーザーデータが存在しません")
-//            user_flag = false
-//        }
+        
+        //ナビゲーションバーの背景を変更
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        //ナビゲーションのタイトル文字列の色を変更
+        //UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)]
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = SplashViewController()
@@ -140,20 +122,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    //    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    //        // Override point for customization after application launch.
-    //
-    //        // アプリウィンドウを設定します。
-    //        self.window = UIWindow(frame: UIScreen.main.bounds)
-    //
-    //        // ウィンドウをヴィジブルにします。
-    //        self.window?.makeKeyAndVisible()
-    //
-    //        // ウィンドウの rootViewController を viewController に設定します。
-    //        self.window?.rootViewController = viewController
-    //
-    //        return true
-    //    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -408,3 +376,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 }
+

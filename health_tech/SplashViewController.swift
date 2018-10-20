@@ -21,7 +21,7 @@ class SplashViewController: UIViewController {
         self.view.addSubview(bg)
         
         // splash image
-        let sp = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width/3, height:self.view.frame.size.width/3*72/102))
+        let sp = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width/2, height:self.view.frame.size.width/2*72/102))
         sp.image = UIImage(named: "splash.png")
         sp.center = self.view.center
         sp.layer.zPosition = 0
@@ -47,10 +47,10 @@ class SplashViewController: UIViewController {
             let users = realm.objects(User.self)
             if (users.count > 0){
                 print("スプラッシュ画面:ユーザー情報が存在します。メイン画面に遷移します。")
-                self.present(MainViewController(), animated: true, completion: nil)
+                self.present(MainViewController(), animated: false, completion: nil)
             }else{
                 print("スプラッシュ画面:ユーザー情報が存在しません。設定画面に遷移します。")
-                self.present(SettingViewController(), animated: true, completion: nil)
+                self.present(SettingViewController(), animated: false, completion: nil)
             }
         }
     }
