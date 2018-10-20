@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
     }
     
     @objc func goToCondition(_ sender: UIButton) {// selectorで呼び出す場合Swift4からは「@objc」をつける。
-        let nextvc = ConditionViewController()
+        let nextvc = ResultViewController()
         self.present(nextvc, animated: true, completion: nil)
     }
 }
