@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class ConditionViewController: UIViewController {
     
@@ -62,6 +63,15 @@ class ConditionViewController: UIViewController {
     
     //次の画面へ
     @objc func goNext(_ sender: UIButton) {
+        //目的によるfoodの選択
+        let realm = try! Realm()
+        let user = realm.objects(User.self).first!
+        if user.request == 0 || user.request == 1{
+            appDelegate.foodId = Int(arc4random_uniform(15))
+        }else{
+            appDelegate.foodId = Int(arc4random(lower: 16, upper: 28))
+        }
+        print(appDelegate.foodId)
         //選択した時間を保存
         appDelegate.time = segment.selectedSegmentIndex
         self.present(ChoiceViewController(), animated: false, completion: nil)
@@ -70,5 +80,13 @@ class ConditionViewController: UIViewController {
     //メインページに遷移
     @objc func goToMain(_ sender: UIButton) {
         self.present(MainViewController(), animated: false, completion: nil)
+    }
+    
+    //範囲指定のランダム関数
+    func arc4random(lower: UInt32, upper: UInt32) -> UInt32 {
+        guard upper >= lower else {
+            return 0
+        }
+        return arc4random_uniform(upper - lower) + lower
     }
 }
