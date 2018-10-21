@@ -3,7 +3,9 @@ import RealmSwift
 
 class ChoiceViewController: UIViewController {
     
-    var jadgement = 1
+    //AppDelegateのインスタンスを取得
+    let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    var food:Food = Food()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,12 +22,9 @@ class ChoiceViewController: UIViewController {
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         
-        //AppDelegateのインスタンスを取得
-        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let foods = appDelegate.recommendFoods
+        food = foods[appDelegate.foodId]
 
-        let realm = try! Realm()
-        let foods = realm.objects(Food.self).filter("cal < 1000")
-        let food:Food = foods[appDelegate.foodId]
         
         var Name = food.name
         var Cap = food.gram
@@ -103,18 +102,22 @@ class ChoiceViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     @objc func yes(_ sender: UIButton) {
-        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
-//        appDelegate.foodId += 1
-//            viewDidLoad()
-//        }
-        if jadgement == 1{
+        appDelegate.foodId = 0
+        appDelegate.selectedFoods.append(food.id)
+        appDelegate.rejectedFoods.append(food.id)
+        appDelegate.recalculation(food: food)
+        if appDelegate.recommend == false {
+            appDelegate.sort()
             viewDidLoad()
         }else{
-        let nextvc = ResultViewController()
-        self.present(nextvc, animated: true, completion: nil)
+            appDelegate.recommend = false
+            let nextvc = ResultViewController()
+            self.present(nextvc, animated: true, completion: nil)
         }
     }
     @objc func no(_ sender: UIButton) {
+        appDelegate.rejectedFoods.append(food.id)
+        appDelegate.foodId += 1
         viewDidLoad()
     }
 }
