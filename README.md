@@ -1,6 +1,6 @@
 # らくへる(らくらくヘルスケア)
 
-[![Product Name](image.png)](https://youtu.be/B2UGFoIFF2Y)
+[![Product Name](icon.png)](https://youtu.be/B2UGFoIFF2Y)
 
 ## 製品概要
 ### Health Tech
