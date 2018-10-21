@@ -102,7 +102,7 @@ class ChoiceViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     @objc func yes(_ sender: UIButton) {
-        appDelegate.foodId = 0
+        appDelegate.foodId = Int(arc4random(lower: 10, upper: 30))
         appDelegate.selectedFoods.append(food.id)
         appDelegate.rejectedFoods.append(food.id)
         appDelegate.recalculation(food: food)
@@ -119,6 +119,13 @@ class ChoiceViewController: UIViewController {
         appDelegate.rejectedFoods.append(food.id)
         appDelegate.foodId += 1
         viewDidLoad()
+    }
+    //範囲指定のランダム関数
+    func arc4random(lower: UInt32, upper: UInt32) -> UInt32 {
+        guard upper >= lower else {
+            return 0
+        }
+        return arc4random_uniform(upper - lower) + lower
     }
 }
 
@@ -144,4 +151,6 @@ class SimpleAsyncImageView: UIImageView {
                 }
         }).resume();
     }
+    
+    
 }

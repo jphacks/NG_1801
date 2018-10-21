@@ -67,7 +67,7 @@ class ConditionViewController: UIViewController {
         let realm = try! Realm()
         let user = realm.objects(User.self).first!
         if user.request == 0 || user.request == 1{
-            appDelegate.foodId = Int(arc4random_uniform(15))
+            appDelegate.foodId = Int(arc4random_uniform(14))
         }else{
             appDelegate.foodId = Int(arc4random(lower: 16, upper: 28))
         }
