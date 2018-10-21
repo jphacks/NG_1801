@@ -64,7 +64,7 @@ class ConditionViewController: UIViewController {
     @objc func goNext(_ sender: UIButton) {
         //選択した時間を保存
         appDelegate.time = segment.selectedSegmentIndex
-        self.present(ChoiceViewController(), animated: false, completion: nil)
+        self.present(ResultViewController(), animated: false, completion: nil)
     }
     
     //メインページに遷移
