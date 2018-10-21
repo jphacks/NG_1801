@@ -53,9 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var compare = 0
     
     //嫌いなものリスト
-//    var rejectedFoods = [Int]()
-    var rejectedFoods = [1,5,10,76,77]
-    
+    var rejectedFoods = [Int]()    
     //推薦順リスト
     var recommendFoods = [Food]()
     
@@ -355,17 +353,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if(reprotein / required_protein < relipid / required_lipid){
             compare_data = reprotein / required_protein
-            compare = 0 //タンパク質不足
+            compare = 1 //タンパク質不足
         }else{
             compare_data = relipid / required_lipid
-            compare = 1 //脂質不足
+            compare = 2 //脂質不足
         }
         if(compare_data > recarbo / required_carbo){
             compare_data = recarbo / required_carbo
-            compare = 2 //炭水化物不足
+            compare = 3 //炭水化物不足
         }
         if(compare_data > resodium / required_sodium){
-            compare = 3 //ナトリウム不足
+            compare = 4 //ナトリウム不足
         }
     }
     
@@ -385,14 +383,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         switch compare{
-        case 0:
-            recommendFoods.sort(by: {$0.protein > $1.protein})
         case 1:
-            recommendFoods.sort(by: {$0.lipid > $1.lipid})
+            recommendFoods.sort(by: {$0.protein > $1.protein})
         case 2:
+            recommendFoods.sort(by: {$0.lipid > $1.lipid})
+        case 3:
             recommendFoods.sort(by: {$0.carbohydrate > $1.carbohydrate})
-        default:
+        case 4:
             recommendFoods.sort(by: {$0.sodium > $1.sodium})
+        default:
+            print("no change")
         }
         print(recommendFoods)
     }

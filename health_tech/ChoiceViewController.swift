@@ -22,9 +22,9 @@ class ChoiceViewController: UIViewController {
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         
-        let foods = appDelegate.recommendedFoods
+        let foods = appDelegate.recommendFoods
         food = foods[appDelegate.foodId]
-//        let food: Food = Food()//消す
+
         
         var Name = food.name
         var Cap = food.gram
@@ -104,9 +104,10 @@ class ChoiceViewController: UIViewController {
     @objc func yes(_ sender: UIButton) {
         appDelegate.foodId = 0
         appDelegate.selectedFoods.append(food.id)
+        appDelegate.rejectedFoods.append(food.id)
         appDelegate.recalculation(food: food)
         if appDelegate.recommend == false {
-            appDelegate.sort_top()
+            appDelegate.sort()
             viewDidLoad()
         }else{
             appDelegate.recommend = false

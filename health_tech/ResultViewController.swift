@@ -22,11 +22,6 @@ class ResultViewController: UIViewController, UIScrollViewDelegate{
         
         //AppDelegateのインスタンスを取得
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
-
-        //選ばれた商品数
-        appDelegate.selectedFoods.append(1)
-        appDelegate.selectedFoods.append(3)
-        appDelegate.selectedFoods.append(40)
         
         appDelegate.timecalculation(time: appDelegate.time)
         let num = appDelegate.selectedFoods.count
