@@ -1,7 +1,7 @@
 # らくへる(らくらくヘルスケア)
 
-[![Product Name](icon.png)](https://youtu.be/B2UGFoIFF2Y)
-アイコンクリックでYoutubeに飛びます！
+[![Product Name](icon.png)](https://youtu.be/B2UGFoIFF2Y)  
+### アイコンクリックでYoutubeに飛びます！
 
 ## 製品概要
 ### Health Tech
