@@ -27,11 +27,11 @@ class MainViewController: UIViewController {
         }
         var Request = ""
         if user.request == 0{
-            Request = "偏りのない食事"
+            Request = "バランスの良い食事"
         }else if user.request == 1{
             Request = "痩せたい"
         }else{
-            Request = "量を食べたい"
+            Request = "筋肉をつけたい"
         }
         
         
