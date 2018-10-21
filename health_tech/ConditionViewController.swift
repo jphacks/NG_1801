@@ -72,9 +72,11 @@ class ConditionViewController: UIViewController {
             appDelegate.foodId = Int(arc4random(lower: 16, upper: 28))
         }
         print(appDelegate.foodId)
-        
         //選択した時間を保存
         appDelegate.time = segment.selectedSegmentIndex
+        appDelegate.timecalculation(time: appDelegate.time)
+        appDelegate.compare = 0
+        appDelegate.sort()
         self.present(ChoiceViewController(), animated: false, completion: nil)
     }
     

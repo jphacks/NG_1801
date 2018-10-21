@@ -116,6 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //ナビゲーションバーの背景を変更
         UINavigationBar.appearance().barTintColor = UIColor.white
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         //ナビゲーションのタイトル文字列の色を変更
         //UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)]
         
@@ -282,7 +283,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("必要脂質")
             print(required_lipid)
             
-            required_carbo = round(required_cal * 3 / 20 * 10) / 10
+            required_carbo = round(required_cal * 3 / 30 * 10) / 10
             print("必要炭水化物")
             print(required_carbo)
             
@@ -347,6 +348,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         recarbo = recarbo - food.carbohydrate
         resodium = resodium - food.sodium
 
+        if(reprotein / required_protein < 0.3){
+            recommend = true
+        }
         if(recal / required_cal < 0.1){
             recommend = true
         }

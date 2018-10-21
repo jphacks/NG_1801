@@ -126,6 +126,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate{
         
         //選択した商品をリセット
         appDelegate.selectedFoods.removeAll()
+        appDelegate.rejectedFoods.removeAll()
     }
     
     override func didReceiveMemoryWarning() {
