@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var resodium:Double = 0
     
     //推薦可否
-    var recommend = true
+    var recommend = false
     
     //比較用
     var compare_data:Double = 0
@@ -344,27 +344,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         resodium = resodium - food.sodium
 
         if(recal / required_cal < 0.1){
-            recommend = false
+            recommend = true
         }
         
         if(reprotein / required_protein < relipid / required_lipid){
             compare_data = reprotein / required_protein
-            compare = 0
+            compare = 0 //タンパク質不足
         }else{
             compare_data = relipid / required_lipid
-            compare = 1
+            compare = 1 //脂質不足
         }
         if(compare_data > recarbo / required_carbo){
             compare_data = recarbo / required_carbo
-            compare = 2
+            compare = 2 //炭水化物不足
         }
         if(compare_data > resodium / required_sodium){
-            compare = 3
+            compare = 3 //ナトリウム不足
         }
-    }
-    
-    func choose(food:Food){
-        
     }
     
     func sort_top(){
