@@ -53,7 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var compare = 0
     
     //嫌いなものリスト
-    var rejectFood = [Int]()
+//    var rejectedFoods = [Int]()
+    var rejectedFoods = [1,5,10,76,77]
+    
+    //推薦順リスト
+    var recommendFoods = [Food]()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // UserDefaultsを使ってフラグを保持する
@@ -61,6 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // "firstLaunch"をキーに、Bool型の値を保持する
         let dict = ["firstLaunch": true]
         userDefault.register(defaults: dict)
+        
+        sort()
         
         // "firstLaunch"に紐づく値がtrueなら(=初回起動)、値をfalseに更新して処理を行う
         if userDefault.bool(forKey: "firstLaunch") {
@@ -74,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let gram = [84.7,128.5,110,145.3,140,70.3,106,98,98,110,100,201,162,199,369,383,380,366,357,357,331,356,250,394,270,247,243,205,209,228,199,281,105,110,105,100,110,105,105,105,105,100,180,140,120,100,100,150,180,180,180,112,500,200,200,200,265,75,75,75,75,75,75,75,75,75,75,210,140,100,115,100,255,310,110,160,110]
             
-            let protein = [1,7.5,2.3,5.3,2.6,2.4,1.9,1.4,2.9,4.2,4.3,10.7,8.4,13.3,19.2,23.4,27.6,20.9,19.4,17.5,19.1,19.5,13.1,16.9,18.6,15.8,9.5,21.9,7.7,11.9,12.1,14.5,3.2,4.1,2.8,4.8,4.5,4.6,3.8,5.5,30,5.2,0,0,0,0,0.4,4.8,6,6,6,3.6,6.5,8.8,1.3,1.9,2.3,6.6,4.7,0.3,0.1,0.1,4.9,2.8,4.4,0.2,6.3,11.1,7.1,4.7,21.7,15.8,9.2,10,2.8,17.6,8]
+            let protein = [1,7.5,2.3,5.3,2.6,2.4,1.9,1.4,2.9,4.2,4.3,10.7,8.4,13.3,19.2,23.4,27.6,20.9,19.4,17.5,19.1,19.5,13.1,16.9,18.6,15.8,9.5,21.9,7.7,11.9,12.1,14.5,3.2,4.1,2.8,4.8,4.5,4.6,3.8,5.5,3.0,5.2,0,0,0,0,0.4,4.8,6,6,6,3.6,6.5,8.8,1.3,1.9,2.3,6.6,4.7,0.3,0.1,0.1,4.9,2.8,4.4,0.2,6.3,11.1,7.1,4.7,21.7,15.8,9.2,10,2.8,17.6,8]
             
             let lipid = [5.1,14.3,9.5,6.9,20.8,7.8,0.6,0.4,0.4,10.6,10.1,18.5,9.9,17.1,19.9,26.4,31.9,25.9,11.4,21.7,19.7,30.9,28.9,32.7,5.9,9.9,4.4,14.6,22.4,6.4,7.2,12.2,0.2,3.2,0.4,0.4,6.3,1.1,0.8,0.5,0.4,1.6,0,0,0,0,0,4.9,0.7,0.7,0.7,0.7,7.8,6,0,0,0,5.7,5.9,0,0,0,4.4,0.9,1.1,0,3.4,9.5,2.2,3,0.8,21,9.4,6.9,0.6,9,8.4]
             
@@ -363,12 +369,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func sort_top(){
+    func sort(){
+        recommendFoods.removeAll()
         
-    }
-    
-    func sort_random(){
-        
+        let realm = try! Realm()
+        let foods = realm.objects(Food.self)
+        if(foods.count>0){
+            for i in 0..<foods.count {
+                recommendFoods.append(foods[i])
+                for j in 0..<rejectedFoods.count {
+                    if(foods[i].id == rejectedFoods[j]){
+                        recommendFoods.removeLast()
+                    }
+                }
+            }
+        }
+        switch compare{
+        case 0:
+            recommendFoods.sort(by: {$0.protein > $1.protein})
+        case 1:
+            recommendFoods.sort(by: {$0.lipid > $1.lipid})
+        case 2:
+            recommendFoods.sort(by: {$0.carbohydrate > $1.carbohydrate})
+        default:
+            recommendFoods.sort(by: {$0.sodium > $1.sodium})
+        }
+        print(recommendFoods)
     }
     
 }
