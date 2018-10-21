@@ -124,6 +124,11 @@ class ResultViewController: UIViewController, UIScrollViewDelegate{
         scrollView.addSubview(nextButton)
         self.view.addSubview(scrollView)
         
+        let statusBar = UIView(frame:CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 20.0))
+        statusBar.backgroundColor = UIColor.white
+        
+        view.addSubview(statusBar)
+        
         //選択した商品をリセット
         appDelegate.selectedFoods.removeAll()
         appDelegate.rejectedFoods.removeAll()
